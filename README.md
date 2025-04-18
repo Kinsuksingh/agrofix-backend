@@ -5,7 +5,7 @@ AgroFix is a bulk vegetable and fruit ordering platform. This is the backend API
 ## Base URLs
 
 - **Local Development**: `http://localhost:5000/api`
-- **Production**: `https://agrofix-backend-beta.vercel.app/api`
+- **Production**: `https://agrofix-backend-beta.vercel.app/`
 
 ---
 
@@ -172,7 +172,7 @@ Authentication: Username and Password in headers.
 ## Run Locally
 
 ```bash
-git clone https://github.com/your-username/agrofix-backend.git
+git clone https://github.com/Kinsuksingh/agrofix-backend.git
 cd agrofix-backend
 npm install
 npm start
