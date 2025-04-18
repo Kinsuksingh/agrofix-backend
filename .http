@@ -1,18 +1,170 @@
+# ### DB Status
+# GET http://localhost:5000/api/db-status
+
+# ### Admin Signup
+# POST http://localhost:5000/api/admin/signup
+# Content-Type: application/json
+
+# {
+#   "name": "adminuser",
+#   "username": "adminuser",
+#   "password": "adminpass"
+# }
+
+# ### Admin Login
+# POST http://localhost:5000/api/admin/login
+# Content-Type: application/json
+
+# {
+#   "username": "admin1",
+#   "password": "securepass123"
+# }
+
+# ### Admin Delete (Optional)
+# DELETE http://localhost:5000/api/admin/delete
+# Content-Type: application/json
+
+# {
+#   "username": "admin1",
+#   "password": "securepass123"
+# }
+
+
+# ### User Signup
+# POST http://localhost:5000/api/user/signup
+# Content-Type: application/json
+
+# {
+#   "username": "johndoe",
+#   "phoneNumber": "9876543210"
+# }
+
+# ### User Login
+# POST http://localhost:5000/api/user/login
+# Content-Type: application/json
+
+# {
+#   "username": "kinsuk",
+#   "phoneNumber": "9267945175"
+# }
+
+
+
+# ### Get all available products (Public)
+# GET http://localhost:5000/api/products
+
+
+
+
+
+
+
+
+
+
+
+# ### Place Order
+# POST http://localhost:5000/api/orders
+# Content-Type: application/json
+
+# {
+#   "buyer_name": "Kinsuk",
+#   "buyer_contact": "9267945175",
+#   "delivery_address": "sdfrsdq",
+#   "payment_method": "Cash on Delivery",
+#   "items": [
+#     {
+#       "name": "Golden Potatoes",
+#       "quantity": 5,
+#       "unit_type": "kg",
+#       "price_per_kg": 40
+#     },
+#     {
+#       "name": "Farm Tomatoes",
+#       "quantity": 2,
+#       "unit_type": "kg",
+#       "price_per_kg": 60
+#     }
+#   ]
+# }
+
+
+
+
+# ### Fetch orders for user by phone
+# GET http://localhost:5000/api/user/orders?phone=9267945175
+
+# ### Fetch only delivered orders
+# GET http://localhost:5000/api/user/orders?phone=9267945175&status=delivered
+
+
+
+
+
+
+# ### Create a new product (Admin Only)
+# POST http://localhost:5000/api/products
+# Content-Type: application/json
+# username: admin1
+# password: securepass123
+
+# {
+#   "name": "Organic Spinach",
+#   "description": "Leafy green spinach loaded with nutrients",
+#   "image_url": "https://th.bing.com/th/id/OIP.y-4Q7VrLwBds6ypVUmT0RwHaKM?w=145&h=200&c=7&r=0&o=5&dpr=1.5&pid=1.7",
+#   "price_details": "₹30 per bunch (approx 500g)",
+#   "price_per_kg": 60.0,
+#   "availability": true,
+#   "stock_kg": 50,
+#   "min_order_kg": 1,
+#   "bulk_discount": "10% off on 10kg+",
+#   "category": "Leafy Green",
+#   "unit_type": "kg"
+# }
+
+
+
+
+# ### Delete a product (Admin Only)
+# DELETE http://localhost:5000/api/products/9
+# username: admin1
+# password: securepass123
+
+
+
+# ### Get all orders (admin)
+# GET http://localhost:5000/api/admin/orders
+# username: adminuser
+# password: adminpass
+
+# ### Update order status to delivered (admin)
+# PUT http://localhost:5000/api/admin/orders/7/status
+# Content-Type: application/json
+# username: adminuser
+# password: adminpass
+
+# {
+#   "status": "confirmed"
+# }
+
+
+
+
 ### DB Status
-GET http://localhost:5000/api/db-status
+GET https://agrofix-backend-beta.vercel.app/api/db-status
 
 ### Admin Signup
-POST http://localhost:5000/api/admin/signup
+POST https://agrofix-backend-beta.vercel.app/api/admin/signup
 Content-Type: application/json
 
 {
   "name": "adminuser",
-  "username": "adminuser",
-  "password": "adminpass"
+  "username": "admin1",
+  "password": "securepass123"
 }
 
 ### Admin Login
-POST http://localhost:5000/api/admin/login
+POST https://agrofix-backend-beta.vercel.app/api/admin/login
 Content-Type: application/json
 
 {
@@ -21,7 +173,7 @@ Content-Type: application/json
 }
 
 ### Admin Delete (Optional)
-DELETE http://localhost:5000/api/admin/delete
+DELETE https://agrofix-backend-beta.vercel.app/api/admin/delete
 Content-Type: application/json
 
 {
@@ -29,48 +181,35 @@ Content-Type: application/json
   "password": "securepass123"
 }
 
-
 ### User Signup
-POST http://localhost:5000/api/user/signup
+POST https://agrofix-backend-beta.vercel.app/api/user/signup
 Content-Type: application/json
 
 {
-  "username": "johndoe",
-  "phoneNumber": "9876543210"
+  "username": "user",
+  "phoneNumber": "0123456789"
 }
 
 ### User Login
-POST http://localhost:5000/api/user/login
+POST https://agrofix-backend-beta.vercel.app/api/user/login
 Content-Type: application/json
 
 {
-  "username": "kinsuk",
-  "phoneNumber": "9267945175"
+  "username": "user",
+  "phoneNumber": "0123456789"
 }
 
-
-
 ### Get all available products (Public)
-GET http://localhost:5000/api/products
-
-
-
-
-
-
-
-
-
-
+GET https://agrofix-backend-beta.vercel.app/api/products
 
 ### Place Order
-POST http://localhost:5000/api/orders
+POST https://agrofix-backend-beta.vercel.app/api/orders
 Content-Type: application/json
 
 {
-  "buyer_name": "Kinsuk",
-  "buyer_contact": "9267945175",
-  "delivery_address": "sdfrsdq",
+  "buyer_name": "user",
+  "buyer_contact": "0123456789",
+  "delivery_address": "123 Maple Street, Greenfield Heights, NY 10001, USA",
   "payment_method": "Cash on Delivery",
   "items": [
     {
@@ -88,60 +227,49 @@ Content-Type: application/json
   ]
 }
 
-
-
-
 ### Fetch orders for user by phone
-GET http://localhost:5000/api/user/orders?phone=9267945175
-
-### Fetch only delivered orders
-GET http://localhost:5000/api/user/orders?phone=9267945175&status=delivered
-
+GET https://agrofix-backend-beta.vercel.app/api/user/orders?phone=0123456789
 
 
 
 
 
 ### Create a new product (Admin Only)
-POST http://localhost:5000/api/products
+POST https://agrofix-backend-beta.vercel.app/api/products
 Content-Type: application/json
 username: admin1
 password: securepass123
 
 {
-  "name": "Organic Spinach",
-  "description": "Leafy green spinach loaded with nutrients",
-  "image_url": "https://th.bing.com/th/id/OIP.y-4Q7VrLwBds6ypVUmT0RwHaKM?w=145&h=200&c=7&r=0&o=5&dpr=1.5&pid=1.7",
-  "price_details": "₹30 per bunch (approx 500g)",
-  "price_per_kg": 60.0,
-  "availability": true,
-  "stock_kg": 50,
-  "min_order_kg": 1,
-  "bulk_discount": "10% off on 10kg+",
-  "category": "Leafy Green",
-  "unit_type": "kg"
-}
+    "name": "Bottle Gourd",
+    "description": "Tender bottle gourd, perfect for healthy Indian recipes",
+    "image_url": "https://th.bing.com/th/id/OIP.6arRlZF4nWx1gRJ03Y5vjgHaE8?w=312&h=200&c=10&o=6&dpr=1.5&pid=placeholderpartnerid&rm=2",
+    "price_details": "₹22 per kg",
+    "price_per_kg": 22.0,
+    "availability": true,
+    "stock_kg": 75,
+    "min_order_kg": 1,
+    "bulk_discount": "10% off on 15kg+",
+    "category": "Vegetable",
+    "unit_type": "kg"
+  }
 
-
-
-
+  
 ### Delete a product (Admin Only)
-DELETE http://localhost:5000/api/products/9
+DELETE https://agrofix-backend-beta.vercel.app/api/products/9
 username: admin1
 password: securepass123
 
+### Get all orders (Admin)
+GET https://agrofix-backend-beta.vercel.app/api/admin/orders
+username: admin1
+password: securepass123
 
-
-### Get all orders (admin)
-GET http://localhost:5000/api/admin/orders
-username: adminuser
-password: adminpass
-
-### Update order status to delivered (admin)
-PUT http://localhost:5000/api/admin/orders/7/status
+### Update order status to delivered (Admin)
+PUT https://agrofix-backend-beta.vercel.app/api/admin/orders/18/status
 Content-Type: application/json
-username: adminuser
-password: adminpass
+username: admin1
+password: securepass123
 
 {
   "status": "confirmed"
