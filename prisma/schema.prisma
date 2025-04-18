@@ -1,0 +1,67 @@
+// This is your Prisma schema file
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql" // You can change this to mysql, sqlite, sqlserver, etc.
+  url      = env("DATABASE_URL")
+}
+
+model Admin {
+  id             Int      @id @default(autoincrement())
+  name           String
+  username       String   @unique
+  password_hash  String
+}
+
+model User {
+  id           Int    @id @default(autoincrement())
+  username     String @unique
+  phoneNumber  String @unique
+}
+
+model Product {
+  id             Int      @id @default(autoincrement())
+  name           String
+  description    String
+  image_url      String
+  price_details  String      // Human-readable display (e.g. ₹100 per kg)
+  price_per_kg   Float       // Useful for calculations
+  availability   Boolean     @default(true)
+  stock_kg       Float       // Inventory available in kg
+  min_order_kg   Float       @default(1.0)  // Minimum order quantity in kg
+  bulk_discount  String?     // e.g. "10% off for 5kg+"
+  category       String?     // e.g. "Leafy", "Root", etc.
+  unit_type      String?     // e.g. "kg", "bunch", "packet"
+
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
+}
+
+
+model Order {
+  id               Int          @id @default(autoincrement())
+  buyer_name       String
+  buyer_contact    String
+  delivery_address String
+  payment_method   String
+  status           String       @default("pending")
+  created_at       DateTime     @default(now())
+  total_amount     Float
+
+  cart_summary     OrderItem[]  @relation("OrderToItems")
+}
+
+model OrderItem {
+  id           Int    @id @default(autoincrement())
+  product_name String
+  quantity     Float
+  unit_type    String
+  price_per_kg Float
+  total_price  Float
+
+  order        Order  @relation("OrderToItems", fields: [orderId], references: [id], onDelete: Cascade)
+  orderId      Int
+}
